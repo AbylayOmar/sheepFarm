@@ -52742,6 +52742,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
@@ -52749,6 +52750,32 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   components: {
     App: _components_App__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('http://127.0.0.1:8000/api/today').then(function (response) {
+      return _this.today = response.data;
+    });
+    axios.get('http://127.0.0.1:8000/api/sheep/1').then(function (response) {
+      return _this.apdock = response.data;
+    });
+    axios.get('http://127.0.0.1:8000/api/sheep/2').then(function (response) {
+      return _this.bpdock = response.data;
+    });
+    axios.get('http://127.0.0.1:8000/api/sheep/3').then(function (response) {
+      return _this.cpdock = response.data;
+    });
+    axios.get('http://127.0.0.1:8000/api/sheep/4').then(function (response) {
+      return _this.dpdock = response.data;
+    });
+  },
+  data: {
+    today: null,
+    apdock: null,
+    bpdock: null,
+    cpdock: null,
+    dpdock: null
   },
   router: _router_js__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
