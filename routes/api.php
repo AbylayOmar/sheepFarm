@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Setting;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +19,17 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('sheep', 'SheepController@index');
+Route::get('sheep/{id}', 'SheepController@index_from_paddock');
+
+Route::post('sheep', 'SheepController@store');
+Route::post('sheep/{id}', 'SheepController@store_in_paddock');
+Route::post('/sheep/kill/{id}', 'SheepController@kill_sheep');
+Route::post('/sheep/move/{s_id}/{p_id}', 'SheepController@move_sheep');
+
+Route::delete('sheep/{id}', 'SheepController@delete');
+
+Route::get('today', 'DayController@index');
+
+
