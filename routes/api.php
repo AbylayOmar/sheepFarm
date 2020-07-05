@@ -26,7 +26,7 @@ Route::get('sheep/{id}', 'SheepController@index_from_paddock');
 Route::post('sheep', 'SheepController@store');
 Route::post('sheep/{id}', 'SheepController@store_in_paddock');
 Route::post('/sheep/kill/{id}', 'SheepController@kill_sheep');
-Route::post('/sheep/move/{s_id}/{p_id}', 'SheepController@move_sheep');
+Route::post('/sheep/move/{sid}/{pid}', 'SheepController@move_sheep');
 
 Route::delete('sheep/{id}', 'SheepController@delete');
 

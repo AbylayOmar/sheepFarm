@@ -10,8 +10,8 @@ use App\Setting;
 class DayController extends Controller
 {
     function index() {
-        $settings = Setting::get();
-
+        $settings = Setting::where('id', 1)->first();
+        /**
         $start = Carbon::parse($settings[0] -> start_date);
         $end = Carbon::parse(now());
         $seconds = $end->diffInSeconds($start);
@@ -19,5 +19,7 @@ class DayController extends Controller
         $today = intdiv($seconds, $settings[0] -> day_duration);
 
         return $today;
+         */
+        return $settings -> today;
     }
 }

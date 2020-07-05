@@ -52739,6 +52739,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _router_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router.js */ "./resources/js/router.js");
 /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/App */ "./resources/js/components/App.vue");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -52757,6 +52759,9 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     axios.get('http://127.0.0.1:8000/api/today').then(function (response) {
       return _this.today = response.data;
     });
+    axios.get('http://127.0.0.1:8000/api/sheep').then(function (response) {
+      return _this.all_sheeps = response.data;
+    });
     axios.get('http://127.0.0.1:8000/api/sheep/1').then(function (response) {
       return _this.apdock = response.data;
     });
@@ -52770,12 +52775,31 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       return _this.dpdock = response.data;
     });
   },
-  data: {
+  data: _defineProperty({
     today: null,
     apdock: null,
     bpdock: null,
     cpdock: null,
-    dpdock: null
+    dpdock: null,
+    all_sheeps: null,
+    selected_paddock: null
+  }, "selected_paddock", null),
+  methods: {
+    moveSheep: function moveSheep(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      var url = 'http://127.0.0.1:8000/api/sheep/move/' + this.selected_sheep + '/' + this.selected_paddock;
+      console.log(url);
+      axios({
+        method: 'post',
+        url: url
+      }).then(function (res) {
+        _this2.$router.go();
+      }, function (err) {
+        console.log(err);
+      });
+    }
   },
   router: _router_js__WEBPACK_IMPORTED_MODULE_1__["default"]
 });

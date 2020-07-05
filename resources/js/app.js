@@ -15,6 +15,9 @@ const app = new Vue({
         axios.get('http://127.0.0.1:8000/api/today')
                 .then(response => this.today = response.data);
 
+        axios.get('http://127.0.0.1:8000/api/sheep')
+                .then(response => this.all_sheeps = response.data);
+
         axios.get('http://127.0.0.1:8000/api/sheep/1')
                 .then(response => this.apdock = response.data);
 
@@ -34,6 +37,25 @@ const app = new Vue({
         bpdock: null,
         cpdock: null,
         dpdock: null,
+        all_sheeps: null,
+        selected_paddock: null,
+        selected_paddock: null
+    },
+
+    methods: {
+        moveSheep: function (e) {
+            e.preventDefault();
+            var url = 'http://127.0.0.1:8000/api/sheep/move/' + this.selected_sheep + '/' + this.selected_paddock;
+            console.log(url);
+            axios({
+                method: 'post',
+                url: url
+            }).then(res =>{
+                this.$router.go()
+            }, err =>{
+                console.log(err);
+            });
+        }
     },
 
     router

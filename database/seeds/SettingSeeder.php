@@ -16,6 +16,7 @@ class SettingSeeder extends Seeder
         $settings = new Setting();
         $settings -> start_date = now();
         $settings -> day_duration = 10;
+        $settings -> today = 0;
         $settings -> save();
     }
 }

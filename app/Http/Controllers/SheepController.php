@@ -11,12 +11,12 @@ class SheepController extends Controller
 {
     
     function index() {
-        $sheeps = Sheep::all();
+        $sheeps = Sheep::where([['alive', 1]])->get();
         return $sheeps;
     }
 
     function index_from_paddock($id) {
-        $sheeps = Sheep::where('paddock', '=', $id)->get();
+        $sheeps = Sheep::where([['paddock', $id], ['alive', 1]])->get();
         return $sheeps;
     }
 
@@ -45,9 +45,9 @@ class SheepController extends Controller
         return Sheep::all();
     }
 
-    function move_sheep($s_id, $p_id) {
-        Sheep::where('id', $s_id)->update(['paddock' => $p_id]);
+    function move_sheep($sid, $pid) {
+        Sheep::where('id', $sid)->update(['paddock' => $pid]);
 
-        return Sheep::all();
+        return Response(200);
     }
 }

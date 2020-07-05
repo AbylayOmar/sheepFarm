@@ -14,9 +14,16 @@ class SheepSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 10; $i++) {
-            Sheep::create(['alive' => 1, 'paddock' => rand(1, 4)]);
+        for ($i = 0; $i < 3; $i++) {
+            Sheep::create(['alive' => 1, 'paddock' => 1]);
         }
+        for ($i = 0; $i < 4; $i++) {
+            Sheep::create(['alive' => 1, 'paddock' => 2]);
+        }
+        for ($i = 0; $i < 2; $i++) {
+            Sheep::create(['alive' => 1, 'paddock' => 3]);
+        }
+        Sheep::create(['alive' => 1, 'paddock' => 4]);
 
     }
 }
