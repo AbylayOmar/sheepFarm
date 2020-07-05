@@ -25,6 +25,9 @@
 git clone 
 ```
 
+Создайте в корневой директорий файл .env и скопируйте все из .env.example
+Создайте файл database.sqlite в директорий database
+
 Для установки зависимостей запустите скрипт configure .sh
 ```sh
 ./configure.sh
